@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            position: relative; /* Ensure the body is positioned for absolute positioning */
+        }
+        #backgroundMusic {
+            position: fixed; /* Allow positioning of the audio control */
+            transition: left 0.5s, top 0.5s; /* Smooth transition for movement */
+        }
+        #soupPriceButton {
+            transition: left 0.5s, top 0.5s; /* Add transition for button movement */
+            position: absolute; /* Allow positioning of the button */
+        }
+    </style>
+</head>
+<body>
+    <audio id="backgroundMusic" controls src="audio.mp3" autoplay loop></audio>
+
+    <nav>
+        <img src="https://cdn2.iconfinder.com/data/icons/indian-cuisine/500/vab860_2_red_indian_soup_isometric_cartoon_logo_food-512.png" alt="">
+        <ul>
+            <li><a href="https://maps.app.goo.gl/VBkgCcBN92JR311c6">Home</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/S%C3%A1mi_people#Division_by_occupation">About us</a></li>
+            <li><a href="mailto:contact@gmail.com">Contact</a></li>
+            <li>Pricing</li>
+            <li>support us</li>
+        </ul>
+    </nav>
+    <header>
+        <div>
+            <h1>Our Indian Soup makes the biggest Company of <strong>tomorrow</strong></h1>
+            <h2>Yummm, spicy spicy</h2>
+        </div>
+        <div class="bck">
+            <img src="https://i0.wp.com/supersoupered.com/wp-content/uploads/2022/12/rasam.jpg?w=1200&ssl=1" alt="">
+        </div>
+    </header>
+    <section class="company">
+        <h1>these companies have placed their trust in us</h1>
+        <ul>
+            <li><img src="https://clipart-library.com/images/pi7rEnLbT.png" alt=""></li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png" alt=""></li>
+            <li><img src="https://logos-world.net/wp-content/uploads/2021/11/UN-United-Nations-Emblem.png" alt=""></li>
+            <li><img src="https://allfreshlaundry.com.au/wp-content/uploads/2019/08/Logo-laundromat-850x1024.png" alt=""></li>
+            <li><img src="https://logos-world.net/wp-content/uploads/2020/11/HP-Logo.png" alt=""></li>
+            <li><img src="https://logos-world.net/wp-content/uploads/2020/03/Coca-Cola-Logo.png" alt=""></li>
+            <li><img src="https://sanningskommissionensamer.se/wp-content/uploads/2022/11/logga_engelska.png" alt=""></li>
+            <li><img src="https://pluspng.com/img-png/nasa-logo-png-nasa-logo-1664.png" alt=""></li>
+            <li><img src="https://redpawndynamics.com/cdn/shop/files/kiss-cut-stickers-white-3x3-default-65c14a8e0effa.png?v=1707166355&width=1946" alt=""></li>
+            <li><img src="https://logos-world.net/wp-content/uploads/2020/12/CIA-Emblem.png" alt=""></li>
+
+            <li><img src="https://clipart-library.com/images/pi7rEnLbT.png" alt=""></li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png" alt=""></li>
+            <li><img src="https://logos-world.net/wp-content/uploads/2021/11/UN-United-Nations-Emblem.png" alt=""></li>
+            <li><img src="https://allfreshlaundry.com.au/wp-content/uploads/2019/08/Logo-laundromat-850x1024.png" alt=""></li>
+            <li><img src="https://logos-world.net/wp-content/uploads/2020/11/HP-Logo.png" alt=""></li>
+            <li><img src="https://logos-world.net/wp-content/uploads/2020/03/Coca-Cola-Logo.png" alt=""></li>
+            <li><img src="https://sanningskommissionensamer.se/wp-content/uploads/2022/11/logga_engelska.png" alt=""></li>
+            <li><img src="https://pluspng.com/img-png/nasa-logo-png-nasa-logo-1664.png" alt=""></li>
+            <li><img src="https://redpawndynamics.com/cdn/shop/files/kiss-cut-stickers-white-3x3-default-65c14a8e0effa.png?v=1707166355&width=1946" alt=""></li>
+            <li><img src="https://logos-world.net/wp-content/uploads/2020/12/CIA-Emblem.png" alt=""></li>
+        </ul>
+    </section>
+
+    <section class="buy">
+        <ul>
+            <li>
+                <h1>Original Soup</h1>
+                <img src="https://bwog.com/wp-content/uploads/2022/10/badsoup.jpeg" alt="">
+                <button id="soupPriceButton">Buy the soup for 10 ₹ only</button>
+            </li>
+        </ul>
+    </section>
+
+    <script>
+        const button = document.getElementById('soupPriceButton');
+        const audio = document.getElementById('backgroundMusic');
+        let isMoving = true; // Flag to control movement
+
+        function getRandomPrice() {
+            return (Math.random() * (10000000000 - 1000) + 1000000000).toFixed(2); // Expensive price between 1000 and 10000
+        }
+
+        function moveAudioControl() {
+            if (!isMoving) return; // Prevent movement if user is interacting
+
+            const windowWidth = window.innerWidth - audio.offsetWidth; // Calculate max width
+            const windowHeight = window.innerHeight - audio.offsetHeight; // Calculate max height
+            const randomX = Math.random() * windowWidth; // Random X position
+            const randomY = Math.random() * windowHeight; // Random Y position
+
+            audio.style.left = `${randomX}px`; // Set random left position
+            audio.style.top = `${randomY}px`; // Set random top position
+        }
+
+        window.addEventListener('load', () => {
+            moveAudioControl(); // Move audio control when the page loads
+            audio.play(); // Start playing the audio
+
+            // Move the audio control every 2 seconds
+            setInterval(moveAudioControl, 1000);
+        });
+
+        // Stop moving the audio control when the user interacts with it
+        audio.addEventListener('mouseenter', () => {
+            isMoving = false; // Stop moving when hovered
+        });
+
+        audio.addEventListener('mouseleave', () => {
+            isMoving = true; // Resume moving when not hovered
+        });
+
+        button.addEventListener('mouseenter', () => {
+            const expensivePrice = getRandomPrice();
+            button.textContent = `Buy the soup for ${expensivePrice} ₹ only`;
+        });
+
+        button.addEventListener('mouseleave', () => {
+            button.textContent = `Buy the soup for 10 ₹ only`;
+        });
+    </script>
+</body>
+</html>
